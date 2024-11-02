@@ -44,10 +44,10 @@ async function detectPose() {
             pose.keypoints.forEach((keypoint) => {
                 if (keypoint.score > 0.5) { // 信頼度が一定以上の関節のみを描画
                     ctx.beginPath();
-                    ctx.arc(keypoint.x + 100, keypoint.y - 500, 5, 0, 2 * Math.PI);
+                    ctx.arc(keypoint.x + 100, keypoint.y + 500, 5, 0, 2 * Math.PI);
                     ctx.fillStyle = 'green';
                     ctx.fill();
-                    console.log(`関節ポイント描画: (${keypoint.x + 100}, ${keypoint.y - 500})`);
+                    console.log(`関節ポイント描画: (${keypoint.x + 100}, ${keypoint.y + 500})`);
                 }
             });
 
@@ -58,12 +58,12 @@ async function detectPose() {
                 const kp2 = pose.keypoints[j];
                 if (kp1.score > 0.5 && kp2.score > 0.5) {
                     ctx.beginPath();
-                    ctx.moveTo(kp1.x + 100, kp1.y - 500);
-                    ctx.lineTo(kp2.x + 100, kp2.y - 500);
+                    ctx.moveTo(kp1.x + 100, kp1.y + 500);
+                    ctx.lineTo(kp2.x + 100, kp2.y + 500);
                     ctx.strokeStyle = 'black';
                     ctx.lineWidth = 15;
                     ctx.stroke();
-                    console.log(`線描画: (${kp1.x + 100}, ${kp1.y} - 500) から (${kp2.x + 100}, ${kp2.y - 500})`);
+                    console.log(`線描画: (${kp1.x + 100}, ${kp1.y} + 500) から (${kp2.x + 100}, ${kp2.y + 500})`);
                 }
             });
         });
