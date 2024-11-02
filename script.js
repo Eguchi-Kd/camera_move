@@ -12,7 +12,6 @@ async function loadMoveNet() {
 
 // Webカメラからのストリームを設定
 async function setupVideo() {
-    const video = document.getElementById("video")
     try {
         const stream = await navigator.mediaDevices.getUserMedia({
             video: true,
