@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoveNet Body Tracking</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebカメラからのPoseNetとVRM同期</title>
 </head>
 <body>
-  <video id="webcam" autoplay playsinline></video>
-  <canvas id="output"></canvas>
-  <script src="app.js"></script>
+    <!-- Canvas element -->
+    <canvas id="output" width="1200" height="1500"></canvas>
+    <video id="video" width="840" height="520" autoplay playsinline></video>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+    <script src="script.js"></script>
 </body>
 </html>
