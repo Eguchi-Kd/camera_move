@@ -12,17 +12,22 @@ async function loadMoveNet() {
 
 // Webカメラからのストリームを設定
 async function setupVideo() {
-    const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: false // 音声は不要ならfalse
-    });
-    video.srcObject = stream;
-    video.onloadeddata = async () => {
-        console.log("Webカメラからのストリームが開始されました");
-        await loadMoveNet(); // MoveNetモデルをロード
-        detectPose(); // 姿勢検出開始
-    };
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false // 音声は不要ならfalse
+        });
+        video.srcObject = stream;
+        video.onloadeddata = async () => {
+            console.log("Webカメラからのストリームが開始されました");
+            await loadMoveNet(); // MoveNetモデルをロード
+            detectPose(); // 姿勢検出開始
+        };
+    } catch (error) {
+        console.error("カメラの設定中にエラーが発生しました:", error);
+    }
 }
+
 
 // 姿勢検出と描画
 async function detectPose() {
