@@ -44,10 +44,10 @@ async function detectPose() {
             pose.keypoints.forEach((keypoint) => {
                 if (keypoint.score > 0.5) { // 信頼度が一定以上の関節のみを描画
                     ctx.beginPath();
-                    ctx.arc(keypoint.x, keypoint.y - 200, 5, 0, 2 * Math.PI);
+                    ctx.arc(keypoint.x, keypoint.y, 5, 0, 2 * Math.PI);
                     ctx.fillStyle = 'green';
                     ctx.fill();
-                    console.log(`関節ポイント描画: (${keypoint.x}, ${keypoint.y - 200})`);
+                    console.log(`関節ポイント描画: (${keypoint.x}, ${keypoint.y})`);
                 }
             });
 
@@ -58,12 +58,12 @@ async function detectPose() {
                 const kp2 = pose.keypoints[j];
                 if (kp1.score > 0.5 && kp2.score > 0.5) {
                     ctx.beginPath();
-                    ctx.moveTo(kp1.x, kp1.y - 200);
-                    ctx.lineTo(kp2.x, kp2.y - 200);
+                    ctx.moveTo(kp1.x, kp1.y);
+                    ctx.lineTo(kp2.x, kp2.y);
                     ctx.strokeStyle = 'black';
                     ctx.lineWidth = 15;
                     ctx.stroke();
-                    console.log(`線描画: (${kp1.x}, ${kp1.y - 200}) から (${kp2.x}, ${kp2.y - 200})`);
+                    console.log(`線描画: (${kp1.x}, ${kp1.y}) から (${kp2.x}, ${kp2.y})`);
                 }
             });
         });
